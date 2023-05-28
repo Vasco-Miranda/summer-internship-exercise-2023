@@ -1,6 +1,8 @@
 package com.premiumminds.internship.snail;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -25,6 +27,20 @@ public class SnailShellPatternTest {
   public SnailShellPatternTest() {
   };
 
+  private boolean arrayEquals(int[] expected, int[] result) {
+    if (expected.length != result.length) {
+      return false;
+    }
+
+    boolean ret = true;
+    for (int i = 0; i < result.length; i++) {
+      if (expected[i] != result[i]) {
+        ret = false;
+      }
+    }
+    return ret;
+  }
+
   @Test
   public void ScreenLockinPatternTestFirst3Length2Test()
       throws InterruptedException, ExecutionException, TimeoutException {
@@ -32,6 +48,9 @@ public class SnailShellPatternTest {
     Future<int[]> count = new SnailShellPattern().getSnailShell(matrix);
     int[] result = count.get(10, TimeUnit.SECONDS);
     int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    assertEquals(result, expected);
+    boolean equals = arrayEquals(expected, result);
+    //assertEquals(result, expected);
+    assertTrue(equals);
   }
+  
 }
