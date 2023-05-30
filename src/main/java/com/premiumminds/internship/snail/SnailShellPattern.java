@@ -18,13 +18,14 @@ class SnailShellPattern implements ISnailShellPattern {
    * @return order array of values thar represent a snail shell pattern
    */
   public Future<int[]> getSnailShell(int[][] matrix) {
+    // Se a matriz estiver vazia, devolve um array vazio
+    if (matrix.length == 0 || matrix[0].length == 0) {
+      return CompletableFuture.completedFuture(new int[0]);
+    }
+
     // Lança uma exceção no caso da matriz dada não ser quadrada
     if (matrix.length != matrix[0].length) {
       throw new RuntimeException("Matrix não é quadrada");
-    }
-    // Se a matriz estiver vazia, devolve um array vazio
-    if (matrix.length == 0) {
-      return CompletableFuture.completedFuture(new int[0]);
     }
 
     Integer[] resultRaw = getSnailShellAux(matrix).toArray(new Integer[0]);

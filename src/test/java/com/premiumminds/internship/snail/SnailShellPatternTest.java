@@ -48,8 +48,20 @@ public class SnailShellPatternTest {
     Future<int[]> count = new SnailShellPattern().getSnailShell(matrix);
     int[] result = count.get(10, TimeUnit.SECONDS);
     int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    boolean equals = arrayEquals(expected, result);
     //assertEquals(result, expected);
+    boolean equals = arrayEquals(expected, result);
+    assertTrue(equals);
+  }
+
+  @Test
+  public void SnailShellPatternEmptyTest()
+      throws InterruptedException, ExecutionException, TimeoutException {
+    int[][] matrix = { { } };
+    Future<int[]> count = new SnailShellPattern().getSnailShell(matrix);
+    int[] result = count.get(10, TimeUnit.SECONDS);
+    int[] expected = {};
+    //assertEquals(result, expected);
+    boolean equals = arrayEquals(expected, result);
     assertTrue(equals);
   }
   
