@@ -104,7 +104,7 @@ class SnailShellPattern implements ISnailShellPattern {
     int[][] ret = new int[n][n];
 
     for (int i = 0; i < n; i++) {
-      for (int j = 0; i < n; j++) {
+      for (int j = 0; j < n; j++) {
         ret[i][j] = matrix[i + 1][j + 1];
       }
     }
