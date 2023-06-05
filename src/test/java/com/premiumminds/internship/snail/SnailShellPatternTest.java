@@ -26,6 +26,7 @@ public class SnailShellPatternTest {
   public SnailShellPatternTest() {
   };
 
+  // Função auxiliar para comparar arrays, pois o assertEquals estava a comparar endereços de memória no VSCode
   private boolean arrayEquals(int[] expected, int[] result) {
     if (expected.length != result.length) {
       return false;
